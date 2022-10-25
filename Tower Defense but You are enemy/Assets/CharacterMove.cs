@@ -10,6 +10,7 @@ public class CharacterMove : MonoBehaviour
 
     private Transform target;
     private int wavepointIndex = 0;
+    Bullet bullet;
 
     private void Start()
     {
@@ -19,11 +20,13 @@ public class CharacterMove : MonoBehaviour
     public void TakingDamage(int amount)
     {
         health -= amount;
+        
         if(health <= 0)
         {
             Die();
         }
     }
+  
 
     void Die()
     {
