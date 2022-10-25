@@ -10,11 +10,13 @@ public class CharacterMove : MonoBehaviour
 
     private Transform target;
     private int wavepointIndex = 0;
+    float speedtemp;
     Bullet bullet;
 
     private void Start()
     {
         target = Waypoints.points[0];
+        speedtemp = speed;
     }
 
     public void TakingDamage(int amount)
@@ -36,6 +38,14 @@ public class CharacterMove : MonoBehaviour
     private void Update()
     {
         Vector3 dir = target.position - transform.position;
+        if(Spawner.area < 5)
+        {
+            speed = 0;
+        }
+        else
+        {
+            speed = speedtemp;
+        }
         transform.Translate(dir.normalized * speed * Time.deltaTime,Space.World);
 
         if(Vector3.Distance(transform.position, target.position) <= 0.2f)
