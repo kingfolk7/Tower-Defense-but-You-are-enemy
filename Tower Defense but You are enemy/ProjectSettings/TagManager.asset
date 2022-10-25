@@ -43,3 +43,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 485835113
+    locked: 0
+  - name: MiddleGround
+    uniqueID: 119511243
+    locked: 0
+  - name: ForeGround
+    uniqueID: 3426571819
+    locked: 0
+  - name: Towers and Characters
+    uniqueID: 2693361203
+    locked: 0
+  - name: Bullets
+    uniqueID: 3853932791
+    locked: 0
