@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class Spawner : MonoBehaviour
 {
@@ -11,11 +12,13 @@ public class Spawner : MonoBehaviour
     int spawnID = 1;
     public Tilemap spawnTilemap;
     public static int area = 0;
+    public TextMeshProUGUI scoreUI;
 
 
     private void Update()
     {
         DetechSpawnPoint();
+        scoreUI.text = "Area: "+ area.ToString() + "/5";
     }
 
     void DetechSpawnPoint()
