@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public Transform targetToAttack;
+    public GameObject targetToAttack;
     public float range;
     public string targetsTag = "Target";
     public float fireRate = 1f;
@@ -13,10 +13,7 @@ public class Tower : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     // Start is called before the first frame update
-    void Start()
-    {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
-    }
+    
 
     void UpdateTarget()
     {
@@ -34,7 +31,7 @@ public class Tower : MonoBehaviour
         }
         if(nearestTarget != null && shortestDistance <= range)
         {
-            targetToAttack = nearestTarget.transform;
+            targetToAttack = nearestTarget ;
         }
         else
         {
@@ -45,9 +42,24 @@ public class Tower : MonoBehaviour
     void Update()
     {
         if(targetToAttack == null)
-            return;
+        {
+            UpdateTarget(); 
+  
+        }else
+        {
+            if (Vector2.Distance(targetToAttack.transform.position, transform.position) > range)
+            {
+                UpdateTarget(); 
+             
+            }
+        }
 
-        if(fireCountDown <= 0f)
+        if (targetToAttack == null)
+        {
+            return;
+        }
+
+        if (fireCountDown <= 0f)
         {
             Shoot();
             fireCountDown = 1f / fireRate;
@@ -61,7 +73,7 @@ public class Tower : MonoBehaviour
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet != null)
-            bullet.Seek(targetToAttack);
+            bullet.Seek(targetToAttack.transform);
     }
 
     private void OnDrawGizmosSelected()
