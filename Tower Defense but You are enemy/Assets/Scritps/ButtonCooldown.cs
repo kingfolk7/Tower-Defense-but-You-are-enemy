@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ButtonCooldown : MonoBehaviour
 {
     [SerializeField] float coolDownDuration;
+    [SerializeField] Image uiFill;
     [SerializeField] Button mybutton;
     // Start is called before the first frame update
     void Awake()
@@ -25,9 +26,17 @@ public class ButtonCooldown : MonoBehaviour
 
     IEnumerator Cooldown()
     {
-        mybutton.interactable = false;
-        yield return new WaitForSeconds(coolDownDuration);
+        float maxCool = coolDownDuration;
+        while (coolDownDuration >= 0)
+        {
+            mybutton.interactable = false;
+            uiFill.fillAmount = Mathf.InverseLerp(maxCool, 0, coolDownDuration);
+            coolDownDuration-= 1 * Time.deltaTime;
+            yield return null; 
+        }
+ 
         mybutton.interactable = true;
+        coolDownDuration = maxCool;
 
     }
     // Update is called once per frame
