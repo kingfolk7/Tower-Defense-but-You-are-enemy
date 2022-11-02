@@ -5,28 +5,39 @@ using UnityEngine;
 public class CharacterMove : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float speed = 10f;
+    public float speedDefault = 10f;
     public int health = 100;
 
     private Transform target;
     private int wavepointIndex = 0;
-    float speedtemp;
+    public float speedtemp;
     Bullet bullet;
+    private static bool isTakingDam = false;
+    
+    public void ApplySkill(Skill s)
+    {
+        s.UseSkill(this);
+    }
 
     private void Start()
     {
         target = Waypoints.points[0];
-        speedtemp = speed;
+        speedtemp = speedDefault;
     }
 
     public void TakingDamage(int amount)
     {
+        
         health -= amount;
         
         if(health <= 0)
         {
             Die();
         }
+    }
+    public bool Immune()
+    {
+        return isTakingDam;
     }
   
 
@@ -37,16 +48,9 @@ public class CharacterMove : MonoBehaviour
 
     private void Update()
     {
+        
         Vector3 dir = target.position - transform.position;
-        if(Spawner.area < 5)
-        {
-            speed = 0;
-        }
-        else
-        {
-            speed = speedtemp;
-        }
-        transform.Translate(dir.normalized * speed * Time.deltaTime,Space.World);
+        transform.Translate(dir.normalized * speedDefault * Time.deltaTime,Space.World);
 
         if(Vector3.Distance(transform.position, target.position) <= 0.2f)
         {
@@ -63,5 +67,10 @@ public class CharacterMove : MonoBehaviour
         }
         wavepointIndex++;
         target = Waypoints.points[wavepointIndex];
+    }
+
+    public void setImmune(bool set)
+    {
+        isTakingDam = set;
     }
 }

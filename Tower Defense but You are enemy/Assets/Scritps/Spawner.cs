@@ -11,14 +11,11 @@ public class Spawner : MonoBehaviour
     public Transform spawnRoot;
     int spawnID = 1;
     public Tilemap spawnTilemap;
-    public static int area = 0;
-    public TextMeshProUGUI scoreUI;
 
 
     private void Update()
     {
         DetechSpawnPoint();
-        scoreUI.text = "Area: "+ area.ToString() + "/5";
     }
 
     void DetechSpawnPoint()
@@ -33,8 +30,7 @@ public class Spawner : MonoBehaviour
             {
                 SpawnCharacter(cellPosCentered);
                 spawnTilemap.SetColliderType(cellPosDefault, Tile.ColliderType.None);
-                area++;
-                Debug.Log(area);
+                
             }
         }
     }
