@@ -12,9 +12,17 @@ public class Tower : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform firePoint;
-    // Start is called before the first frame update
-    
 
+    public bool isLaser = false;
+    public LineRenderer lineRenderer;
+    public float DamageOT = 30f;
+    // Start is called before the first frame update
+
+    private void Start()
+    {
+        //if (lineRenderer.enabled)
+        //    lineRenderer.enabled = false;
+    }
     void UpdateTarget()
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag(targetsTag);
@@ -56,15 +64,28 @@ public class Tower : MonoBehaviour
 
         if (targetToAttack == null)
         {
+            if(isLaser == true)
+            {
+                if (lineRenderer.enabled)
+                    lineRenderer.enabled = false;
+            }
             return;
         }
 
-        if (fireCountDown <= 0f)
+        if(isLaser == true)
         {
-            Shoot();
-            fireCountDown = 1f / fireRate;
+            Laser();
         }
-        fireCountDown -= Time.deltaTime;
+        else
+        {
+            if (fireCountDown <= 0f)
+            {
+                Shoot();
+                fireCountDown = 1f / fireRate;
+            }
+            fireCountDown -= Time.deltaTime;
+        }
+        
     }
     void Shoot()
     {
@@ -74,6 +95,17 @@ public class Tower : MonoBehaviour
 
         if (bullet != null)
             bullet.Seek(targetToAttack.transform);
+    }
+
+    void Laser()
+    {
+
+        targetToAttack.GetComponent<CharacterMove>().TakingDamage(DamageOT * Time.deltaTime);
+        if(!lineRenderer.enabled)
+            lineRenderer.enabled=true;
+
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, targetToAttack.transform.position);
     }
 
     private void OnDrawGizmosSelected()

@@ -6,7 +6,7 @@ public class CharacterMove : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speedDefault = 10f;
-    public int health = 100;
+    public float health = 100f;
 
     private Transform target;
     private int wavepointIndex = 0;
@@ -31,7 +31,7 @@ public class CharacterMove : MonoBehaviour
         speedtemp = speedDefault;
     }
 
-    public void TakingDamage(int amount)
+    public void TakingDamage(float amount)
     {
         
         health -= amount;
