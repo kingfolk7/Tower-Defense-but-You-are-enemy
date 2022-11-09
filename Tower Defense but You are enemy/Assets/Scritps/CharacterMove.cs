@@ -73,6 +73,8 @@ public class CharacterMove : MonoBehaviour
     {
         if(wavepointIndex >= Waypoints.points.Length - 1)
         {
+            _dead = true;
+            _gameManager.NotifyDeath(this);
             Destroy(gameObject);
             return;
         }
