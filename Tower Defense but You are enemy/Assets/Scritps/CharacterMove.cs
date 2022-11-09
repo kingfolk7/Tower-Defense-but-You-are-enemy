@@ -13,6 +13,11 @@ public class CharacterMove : MonoBehaviour
     public float speedtemp;
     Bullet bullet;
     private static bool isTakingDam = false;
+
+    [SerializeField] private GameManager _gameManager;
+
+    private bool _dead;
+    public bool Dead => _dead;
     
     public void ApplySkill(Skill s)
     {
@@ -21,6 +26,7 @@ public class CharacterMove : MonoBehaviour
 
     private void Start()
     {
+        _gameManager.RegisterCharacter(this);
         target = Waypoints.points[0];
         speedtemp = speedDefault;
     }
@@ -43,7 +49,12 @@ public class CharacterMove : MonoBehaviour
 
     void Die()
     {
+        _dead = true;
+        _gameManager.NotifyDeath(this);
+        
         Destroy(gameObject);
+       
+        
     }
 
     private void Update()
