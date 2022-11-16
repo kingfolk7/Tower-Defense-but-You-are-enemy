@@ -7,6 +7,7 @@ public class CharacterMove : MonoBehaviour
     // Start is called before the first frame update
     public float speedDefault = 10f;
     public float health = 100f;
+    public float maxHP;
 
     private Transform target;
     private int wavepointIndex = 0;
@@ -18,6 +19,8 @@ public class CharacterMove : MonoBehaviour
 
     private bool _dead;
     public bool Dead => _dead;
+
+    public HealthBar Healthbar;
     
     public void ApplySkill(Skill s)
     {
@@ -26,9 +29,11 @@ public class CharacterMove : MonoBehaviour
 
     private void Start()
     {
+        maxHP = health;
         _gameManager.RegisterCharacter(this);
         target = Waypoints.points[0];
         speedtemp = speedDefault;
+        //HealthBar.SetHealth(health, maxHP);
     }
 
     public void TakingDamage(float amount)
