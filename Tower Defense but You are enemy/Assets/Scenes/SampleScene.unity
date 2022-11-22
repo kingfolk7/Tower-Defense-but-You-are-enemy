@@ -1707,7 +1707,7 @@ GameObject:
   - component: {fileID: 597136316}
   - component: {fileID: 597136315}
   m_Layer: 0
-  m_Name: Turret2.1
+  m_Name: Turret1.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4864,7 +4864,7 @@ GameObject:
   - component: {fileID: 1084875037}
   - component: {fileID: 1084875036}
   m_Layer: 0
-  m_Name: Turret1.1
+  m_Name: Turret2.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4972,7 +4972,7 @@ GameObject:
   - component: {fileID: 1136590041}
   - component: {fileID: 1136590040}
   m_Layer: 0
-  m_Name: Turret2.2
+  m_Name: Turret1.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7453,7 +7453,7 @@ GameObject:
   - component: {fileID: 2098593005}
   - component: {fileID: 2098593004}
   m_Layer: 0
-  m_Name: Turret3.1
+  m_Name: Turret1.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

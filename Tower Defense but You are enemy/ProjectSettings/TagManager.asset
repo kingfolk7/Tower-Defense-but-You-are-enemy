@@ -58,3 +58,6 @@ TagManager:
   - name: ForeGround
     uniqueID: 3426571819
     locked: 0
+  - name: Prop
+    uniqueID: 2020050587
+    locked: 0
