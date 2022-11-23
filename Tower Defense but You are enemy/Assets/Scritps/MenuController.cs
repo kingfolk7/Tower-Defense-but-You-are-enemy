@@ -5,18 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    //private int nextLevel;
+    private int nextLevel;
     public static bool gameIsPaused = false;
     public GameObject pauseMenu;
 
     private void Start()
     {
-        //nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
+        nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
     }
     public void nextScene()
     {
         FindObjectOfType<AudioManager>().Play("Click");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(nextLevel);
     }
     public void Quit()
     {
