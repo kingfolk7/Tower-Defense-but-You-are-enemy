@@ -59,19 +59,20 @@ class IncreaseHp : Skill
     {
         if(cha.health < 100)
         {
-            cha.health += 50;
+            cha.health += 30;
             if (cha.health > 100)
             {
                 cha.health = 100;
             }
         }
-        
+       
 
     }
 
     public override void RemoveBuff(CharacterMove cha)
     {
         return;
+
     }
 }
 
@@ -95,23 +96,32 @@ class ImmuneTank : Skill
     }
 }
 
-class ImmuneAll : Skill
+class FreezeMAXHP : Skill
 {
-    public ImmuneAll(MonoBehaviour coroutineRunner) : base(coroutineRunner)
+    public FreezeMAXHP(MonoBehaviour coroutineRunner) : base(coroutineRunner)
     {
     }
 
     public override void ApplyBuff(CharacterMove cha)
     {
 
-        cha.setImmune(true);
-        delay = 2.0f;
+        if (cha.health < 100)
+        {
+            cha.health += 50;
+            if (cha.health > 100)
+            {
+                cha.health = 100;
+            }
+        }
+        cha.speedDefault = 0.0f;
+        delay = 3.0f;
+
 
     }
 
     public override void RemoveBuff(CharacterMove cha)
     {
-        cha.setImmune(false);
+        cha.speedDefault = 1.0f;
     }
 }
 public class SkillManager : MonoBehaviour
@@ -142,7 +152,7 @@ public class SkillManager : MonoBehaviour
     {
         foreach (CharacterMove characterMove in FindObjectOfType<EnemyManager>().characterMoves)
         {
-            characterMove.ApplySkill(new ImmuneAll(this));
+            characterMove.ApplySkill(new FreezeMAXHP(this));
 
         }
 
