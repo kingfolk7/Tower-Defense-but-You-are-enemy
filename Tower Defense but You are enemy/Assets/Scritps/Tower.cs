@@ -112,7 +112,7 @@ public class Tower : MonoBehaviour
     void Laser()
     {
 
-        targetToAttack.GetComponent<CharacterMove>().TakingDamage(DamageOT * Time.deltaTime);
+        targetToAttack.GetComponent<CharacterMove>().TakingDamage(DamageOT * Time.deltaTime,true);
         if(!lineRenderer.enabled)
             lineRenderer.enabled=true;
 

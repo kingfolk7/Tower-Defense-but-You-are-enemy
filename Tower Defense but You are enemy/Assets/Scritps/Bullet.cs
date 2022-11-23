@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log("hit");
         CharacterMove characterMove = hitTarget.GetComponent<CharacterMove>();
-        if(characterMove != null && characterMove.Immune() == false)
+        if(characterMove != null  )
         {
             characterMove.TakingDamage(damage);
         }

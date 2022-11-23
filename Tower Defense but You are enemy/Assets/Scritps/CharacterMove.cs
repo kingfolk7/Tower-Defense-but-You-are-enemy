@@ -32,9 +32,10 @@ public class CharacterMove : MonoBehaviour
         speedtemp = speedDefault;
     }
 
-    public void TakingDamage(float amount)
+    public void TakingDamage(float amount,bool PassImmune = false)
     {
-
+        if (Immune() && ! PassImmune)
+            return;
         health -= amount;
         if (health <= 0)
         {
