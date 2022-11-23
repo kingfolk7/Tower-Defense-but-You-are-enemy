@@ -18,6 +18,7 @@ public class CharacterMove : MonoBehaviour
 
     private bool _dead;
     public bool Dead => _dead;
+
     
     public void ApplySkill(Skill s)
     {
@@ -33,13 +34,13 @@ public class CharacterMove : MonoBehaviour
 
     public void TakingDamage(float amount)
     {
-        
+
         health -= amount;
-        
-        if(health <= 0)
+        if (health <= 0)
         {
             Die();
         }
+
     }
     public bool Immune()
     {
@@ -73,6 +74,9 @@ public class CharacterMove : MonoBehaviour
     {
         if(wavepointIndex >= Waypoints.points.Length - 1)
         {
+            ScoreManager.instance.AddScore();
+            _dead = true;
+            _gameManager.NotifyDeath(this);
             Destroy(gameObject);
             return;
         }

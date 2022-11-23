@@ -16,6 +16,7 @@ public class Tower : MonoBehaviour
     public bool isLaser = false;
     public LineRenderer lineRenderer;
     public float DamageOT = 30f;
+    [SerializeField] private float radius = 10f;
     // Start is called before the first frame update
 
     private void Start()
@@ -97,6 +98,17 @@ public class Tower : MonoBehaviour
             bullet.Seek(targetToAttack.transform);
     }
 
+    void Explode()
+    {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag(targetsTag);
+        foreach (GameObject target in targets)
+        {
+            if (radius >= Vector3.Distance(transform.position, target.transform.position))
+            {
+                //Do anything about explode damage
+            }
+        }
+    }
     void Laser()
     {
 
