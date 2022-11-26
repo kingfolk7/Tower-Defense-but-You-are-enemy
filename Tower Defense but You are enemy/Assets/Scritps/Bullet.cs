@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
         if(dir.magnitude <= distanceThisFrame)
         {
             HitTarget(target);
-            Destroy(gameObject);
+
             return;
         }
 
@@ -43,6 +43,7 @@ public class Bullet : MonoBehaviour
         if(characterMove != null  )
         {
             characterMove.TakingDamage(damage);
+            Destroy(gameObject);
         }
     }
 

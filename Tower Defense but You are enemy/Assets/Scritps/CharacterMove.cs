@@ -6,7 +6,8 @@ public class CharacterMove : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speedDefault = 10f;
-    public float health = 100f;
+    public float health;
+    public float maxHP = 100f;
 
     private Transform target;
     private int wavepointIndex = 0;
@@ -19,7 +20,8 @@ public class CharacterMove : MonoBehaviour
     private bool _dead;
     public bool Dead => _dead;
 
-    
+    public HealthBar Healthbar;
+
     public void ApplySkill(Skill s)
     {
         s.UseSkill(this);
@@ -27,9 +29,11 @@ public class CharacterMove : MonoBehaviour
 
     private void Start()
     {
+        health = maxHP;
         _gameManager.RegisterCharacter(this);
         target = Waypoints.points[0];
         speedtemp = speedDefault;
+        Healthbar.SetHealth(health, maxHP);
     }
 
     public void TakingDamage(float amount,bool PassImmune = false)
@@ -37,6 +41,8 @@ public class CharacterMove : MonoBehaviour
         if (Immune() && ! PassImmune)
             return;
         health -= amount;
+        Healthbar.SetHealth(health, maxHP);
+
         if (health <= 0)
         {
             Die();
