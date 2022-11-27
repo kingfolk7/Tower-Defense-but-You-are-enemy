@@ -6530,7 +6530,7 @@ MonoBehaviour:
   firePoint: {fileID: 355647480}
   isLaser: 1
   lineRenderer: {fileID: 1231718808}
-  DamageOT: 5
+  DamageOT: 10
   radius: 10
 --- !u!212 &1231718810
 SpriteRenderer:
@@ -7600,7 +7600,7 @@ MonoBehaviour:
   firePoint: {fileID: 1301157492}
   isLaser: 1
   lineRenderer: {fileID: 1753085619}
-  DamageOT: 5
+  DamageOT: 10
   radius: 10
 --- !u!212 &1753085621
 SpriteRenderer:
@@ -8576,8 +8576,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093380337}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.437, y: -0.7445, z: 0}
-  m_LocalScale: {x: 2.9354851, y: 14.857725, z: 1}
+  m_LocalPosition: {x: -11.8312, y: -0.7445, z: 0}
+  m_LocalScale: {x: 5.7239027, y: 14.857725, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 473113078}

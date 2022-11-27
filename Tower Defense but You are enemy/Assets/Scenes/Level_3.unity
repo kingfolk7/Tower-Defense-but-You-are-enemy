@@ -2550,7 +2550,7 @@ MonoBehaviour:
   firePoint: {fileID: 341579054}
   isLaser: 1
   lineRenderer: {fileID: 472711132}
-  DamageOT: 5
+  DamageOT: 7
   radius: 10
 --- !u!212 &472711134
 SpriteRenderer:
@@ -7327,7 +7327,7 @@ MonoBehaviour:
   firePoint: {fileID: 355647480}
   isLaser: 1
   lineRenderer: {fileID: 1231718808}
-  DamageOT: 5
+  DamageOT: 10
   radius: 10
 --- !u!212 &1231718810
 SpriteRenderer:
