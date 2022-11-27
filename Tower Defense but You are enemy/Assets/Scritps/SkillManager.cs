@@ -60,6 +60,7 @@ class IncreaseHp : Skill
         if(cha.health < 100)
         {
             cha.health += 30;
+            cha.Healthbar.SetHealth(cha.health, cha.maxHP);
             if (cha.health > 100)
             {
                 cha.health = 100;
@@ -108,6 +109,7 @@ class FreezeMAXHP : Skill
         if (cha.health < 100)
         {
             cha.health += 50;
+            cha.Healthbar.SetHealth(cha.health, cha.maxHP);
             if (cha.health > 100)
             {
                 cha.health = 100;

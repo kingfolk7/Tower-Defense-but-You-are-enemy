@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private List<CharacterMove> characterMoves = new List<CharacterMove>();
-    public static int rounds = 0;
+    public static int rounds = 1;
+    static int GotoSceneNum = 3;
     // Start is called before the first frame update
     // Update is called once per frame
 
@@ -21,9 +22,19 @@ public class GameManager : MonoBehaviour
         //    SceneManager.LoadScene("SampleScene");
         //    characterMoves[0].isDie(false);
         //}
-        if(rounds > 5)
+        if(rounds >= 6)
         {
-            GameEnd();
+            if(GotoSceneNum < 5 && ScoreManager.instance._score > ScoreManager.instance.scoreVictory)
+            {
+                GotoSceneNum++;
+                GoToNextScene();
+            }
+            else
+            {
+                GameEnd();
+                 
+            }
+
         }
     }
 
@@ -38,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         if (characterMoves.Count == 0)
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(GotoSceneNum, LoadSceneMode.Single);
             rounds++;
         }
        
@@ -46,10 +57,24 @@ public class GameManager : MonoBehaviour
 
     void GameEnd()
     {
-        
-        SceneManager.LoadScene("Main_Menu");
-        rounds = 0;
+        rounds = 1;
+        if (ScoreManager.instance._score > ScoreManager.instance.scoreVictory)
+        {
+            SceneManager.LoadScene("Win");
+        }
+        else
+        {
+            SceneManager.LoadScene("Lose");
+        }
         ScoreManager.instance._score = 0;
-        
+
+
+    }
+    void GoToNextScene()
+    {
+        rounds = 1;
+        SceneManager.LoadScene(GotoSceneNum, LoadSceneMode.Single);
+        ScoreManager.instance._score = 0;
+
     }
 }
