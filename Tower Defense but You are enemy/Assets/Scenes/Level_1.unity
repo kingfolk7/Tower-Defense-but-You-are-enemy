@@ -1931,7 +1931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _score: 0
-  scoreVictory: 1
+  scoreVictory: 10
 --- !u!1001 &556703427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7117,7 +7117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1beaebdffed27e748b942811e508b74c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDownDuration: 0
+  coolDownDuration: 5
   uiFill: {fileID: 1646104016}
   mybutton: {fileID: 1646104015}
 --- !u!1 &1653149076
