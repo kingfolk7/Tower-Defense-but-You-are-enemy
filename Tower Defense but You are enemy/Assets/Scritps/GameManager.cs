@@ -61,10 +61,12 @@ public class GameManager : MonoBehaviour
         if (ScoreManager.instance._score > ScoreManager.instance.scoreVictory)
         {
             SceneManager.LoadScene("Win");
+            GotoSceneNum = 3;
         }
         else
         {
             SceneManager.LoadScene("Lose");
+            GotoSceneNum = 3;
         }
         ScoreManager.instance._score = 0;
 
