@@ -2585,7 +2585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _score: 0
-  scoreVictory: 0
+  scoreVictory: 10
 --- !u!1001 &556703427
 PrefabInstance:
   m_ObjectHideFlags: 0
