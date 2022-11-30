@@ -12,12 +12,18 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth (float health, float maxHealth)
     {
-        Slider.gameObject.SetActive(health < maxHealth);
-        Slider.value = health;
-        Slider.maxValue = maxHealth;
+        if(Slider != null)
+        {
+            Slider.gameObject.SetActive(health < maxHealth);
+            Slider.value = health;
+            Slider.maxValue = maxHealth;
 
-        Slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, Slider.normalizedValue);
-        print("abc");
+            Slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, Slider.normalizedValue);
+        }
+        else
+        {
+            return;
+        }
     }
     void Update()
     {

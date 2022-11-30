@@ -59,9 +59,7 @@ public class CharacterMove : MonoBehaviour
     {
         _dead = true;
         _gameManager.NotifyDeath(this);
-        
         Destroy(gameObject);
-       
         
     }
 
